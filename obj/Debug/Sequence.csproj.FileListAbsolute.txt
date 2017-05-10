@@ -1,0 +1,7 @@
+C:\Users\glyn\Sequence\Sequence\obj\Debug\Sequence.csprojResolveAssemblyReference.cache
+C:\Users\glyn\Sequence\Sequence\bin\Debug\Sequence.dll
+C:\Users\glyn\Sequence\Sequence\bin\Debug\Sequence.pdb
+C:\Users\glyn\Sequence\Sequence\bin\Debug\nunit.framework.dll
+C:\Users\glyn\Sequence\Sequence\bin\Debug\nunit.framework.xml
+C:\Users\glyn\Sequence\Sequence\obj\Debug\Sequence.dll
+C:\Users\glyn\Sequence\Sequence\obj\Debug\Sequence.pdb

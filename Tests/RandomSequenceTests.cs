@@ -94,7 +94,7 @@ namespace GOH.Sequence.Tests
                 object nextAfterAdvance = this.sequence.Current;
                 if(nextAfterAdvance != nextBeforeAdvance)
                 {
-                    IntegrationTest.Fail("Next does not become current after advance() method.");
+                    Assert.Fail("Next does not become current after advance() method.");
                 }
             }
         }

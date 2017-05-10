@@ -1,5 +1,4 @@
-﻿using GOHAV;
-using System;
+﻿using System;
 
 namespace GOH.Sequence
 {
@@ -8,6 +7,7 @@ namespace GOH.Sequence
     public class RandomSequence<T> : Sequence<T>
     {
         private int nextIndex = -1;
+        private Random rnd = new Random();
 
         // Create Sequence without any contained objects
         public RandomSequence() { }
@@ -23,7 +23,7 @@ namespace GOH.Sequence
                 // If it has not been set.
                 if (this.nextIndex < 0)
                 {
-                    this.nextIndex = GOHAVUtility.randomNumberNotThis(0, this.Length, this.CurrentIndex); ;
+                    this.nextIndex = randomNumberNotThis(0, this.Length, this.CurrentIndex); ;
                 }
                 return this.nextIndex;
             }
@@ -50,5 +50,23 @@ namespace GOH.Sequence
             this.currentIndex = this.NextIndex;
             this.nextIndex = -1;
         }
+
+        private int randomNumberNotThis(int lowLimitInclusive, int highLimitExclusive, int notThisNumber)
+        {
+            int newNumber;
+            if (highLimitExclusive - lowLimitInclusive == 1 && lowLimitInclusive == notThisNumber)
+            {
+                string message = string.Format("Number to avoid ({0}) is the only number in the given range {1} - {2} (upper limit excluded)",
+                    notThisNumber, lowLimitInclusive, highLimitExclusive);
+                throw new InvalidOperationException(message);
+            }
+            do {
+                newNumber = rnd.Next(lowLimitInclusive, highLimitExclusive);
+            } while(newNumber == notThisNumber);
+            return newNumber;
+        }
     }
 }
+
+
+

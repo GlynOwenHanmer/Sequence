@@ -64,10 +64,10 @@ namespace GOH.Sequence.Tests
             }
             catch (System.IndexOutOfRangeException)
             {
-                IntegrationTest.Pass();
+                Assert.Pass();
                 return;
             }
-            IntegrationTest.Fail("IndexOutOfRangeException expected but not thrown.");
+            Assert.Fail("IndexOutOfRangeException expected but not thrown.");
         }
 
         [Test]
@@ -80,10 +80,10 @@ namespace GOH.Sequence.Tests
             }
             catch (System.IndexOutOfRangeException)
             {
-                IntegrationTest.Pass();
+                Assert.Pass();
                 return;
             }
-            IntegrationTest.Fail("IndexOutOfRangeException expected but not thrown.");
+            Assert.Fail("IndexOutOfRangeException expected but not thrown.");
         }
     }
 }
