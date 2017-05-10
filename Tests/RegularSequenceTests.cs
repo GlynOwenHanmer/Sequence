@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace GOH.Sequence.Tests
 {
@@ -52,6 +53,47 @@ namespace GOH.Sequence.Tests
             {
                 Assert.Fail("Non random sequence did not return first object after multiple initialisation.");
             }
+        }
+
+        [Test]
+        public void Test_RegularSequence_SetNext()
+        {
+            this.sequence.initialise();
+            Assert.AreEqual(this.objects[0], this.sequence.Current);
+            Assert.AreEqual(this.objects[1], this.sequence.Next);
+
+            int[] invalidIndices = {num_of_objects + 200, -65};
+            foreach (var invalidIndex in invalidIndices)
+            {
+                try
+                {
+                    this.sequence.setNextIndex(invalidIndex);
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
+
+            // Set to last index
+            this.sequence.setNextIndex(num_of_objects - 1);
+            Assert.AreEqual(num_of_objects - 2, this.sequence.CurrentIndex);
+            Assert.AreEqual(this.objects[num_of_objects - 2], this.sequence.Current);
+            Assert.AreEqual(num_of_objects - 1, this.sequence.NextIndex);
+            Assert.AreEqual(this.objects[num_of_objects - 1], this.sequence.Next);
+
+            // Set to first index
+            this.sequence.setNextIndex(0);
+            //Current should be set to last index
+            int expectedCurrentIndex = num_of_objects - 1;
+            Assert.AreEqual(expectedCurrentIndex, this.sequence.CurrentIndex);
+            Assert.AreEqual(this.objects[expectedCurrentIndex], this.sequence.Current);
+            int expectedNextIndex = 0;
+            Assert.AreEqual(expectedNextIndex, this.sequence.NextIndex);
+            Assert.AreEqual(this.objects[expectedNextIndex], this.sequence.Next);
         }
     }
 }
